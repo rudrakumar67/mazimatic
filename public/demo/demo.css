@@ -17,7 +17,14 @@
   position: absolute;
   width: 260px;
 }
-
+body {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 1px;
+  background-image: url(/images/background.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+}
 /* offline-doc */
 
 .offline-doc .navbar.navbar-transparent {
