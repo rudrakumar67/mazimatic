@@ -11,7 +11,9 @@
         background-size: inherit;
     }
 }
-
+body {
+    background: #0e151f !important;
+}
 .big_text {
     font-family: 'Alumni Sans';
     font-style: italic;

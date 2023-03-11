@@ -1,15 +1,22 @@
 import { React, Component } from "react";
+import { Link } from "react-router-dom";
+import { UserConsumer, UserContext } from "../UserContext";
 
 export default class HomeNavBar extends Component {
   render() {
+    const token = localStorage.getItem("token");
+    // console.log(user._currentValue);
     return (
       <nav
         className="navbar navbar-expand-lg"
         style={{ backgroundColor: "transparent" }}
       >
-        <a className="navbar-brand" href="#">
-          <img src="assets/logo/mazimatic_logo_db.png" style={{ width: 175 }} />
-        </a>
+        <Link className="navbar-brand" to="#">
+          <img
+            src="/assets/logo/mazimatic_logo_db.png"
+            style={{ width: 175 }}
+          />
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -24,35 +31,39 @@ export default class HomeNavBar extends Component {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav  ml-auto">
             <li className="nav-item active">
-              <a className="nav-link" href="#home">
+              <Link className="nav-link" to="/">
                 Home <span className="sr-only">(current)</span>
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#vision-content">
+              <Link className="nav-link" to="#vision-content">
                 Our Vision
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="http://nft.mazimatic.com">
+              <Link className="nav-link" to="http://nft.mazimatic.com">
                 NFT
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#Features">
+              <Link className="nav-link" to="#Features">
                 Features
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#Contact">
+              <Link className="nav-link" to="#Contact">
                 Contact Us
-              </a>
+              </Link>
             </li>
-            <li id="dash_nav" className="nav-item">
-              <a className="nav-link" href="dashboard.html">
-                Dashboard
-              </a>
-            </li>
+            {token != null ? (
+              <li id="dash_nav" className="nav-item">
+                <Link className="nav-link" to="dashboard">
+                  Dashboard
+                </Link>
+              </li>
+            ) : (
+              <></>
+            )}
           </ul>
         </div>
       </nav>
