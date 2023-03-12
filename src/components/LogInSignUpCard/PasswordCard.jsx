@@ -3,8 +3,9 @@ import { React, Component } from "react";
 const PasswordCard = ({ nextStep, handleChange, values }) => {
   const Submit = async (e) => {
     e.preventDefault();
+    const API_BASE_URL = "https://apis.mazimatic.com";
     try {
-      const res = await fetch("/api/login", {
+      const res = await fetch(`${API_BASE_URL}/api/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -17,9 +18,9 @@ const PasswordCard = ({ nextStep, handleChange, values }) => {
       const json = await res.json();
       if (!res.ok) {
         const error = res;
-        console.log(error)
+        console.log(error);
       }
- 
+
       const data = json;
       localStorage.setItem("token", data.token);
       window.location.reload(false);

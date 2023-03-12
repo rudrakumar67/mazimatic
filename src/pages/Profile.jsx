@@ -16,7 +16,8 @@ export default class Profile extends Component {
   }
 
   componentDidMount() {
-    fetch("/api/getuser", {
+    const API_BASE_URL = "https://apis.mazimatic.com";
+    fetch(`${API_BASE_URL}/api/getuser`, {
       headers: { Authorization: "Bearer " + localStorage.getItem("token") },
     })
       .then((resp) => resp.json())

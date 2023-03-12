@@ -3,8 +3,9 @@ import { React, Component } from "react";
 const EmailCard = ({ nextStep, handleChange, values }) => {
   const Continue = async (e) => {
     e.preventDefault();
+    const API_BASE_URL = "https://apis.mazimatic.com";
     try {
-      const res = await fetch("/api/checkemail", {
+      const res = await fetch(`${API_BASE_URL}/api/checkemail`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,6 +1,12 @@
 // Packeage
 import { React, useState, useEffect } from "react";
-import { BrowserRouter as Router, json, redirect, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  json,
+  redirect,
+  Route,
+  Routes,
+} from "react-router-dom";
 import { UserProvider } from "./UserContext";
 
 // Pages
@@ -9,6 +15,7 @@ import Transactions from "./pages/Transactions";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
+// import PaymentTest from "./pages/Paymenttest";
 import "slick-carousel/slick/slick.css";
 
 function App() {
@@ -18,26 +25,24 @@ function App() {
   useEffect(() => {
     const fetchUserAuth = async () => {
       try {
-        
+        const API_BASE_URL = "https://apis.mazimatic.com";
         const token = await localStorage.getItem("token");
         if (token) {
-          fetch('/api/getuser', {
-            headers: {Authorization: 'Bearer '+token}
-          }) 
-          .then(resp => resp.json())
-          .then((json)=>{
-            console.log(json.user) 
-            if(json.user){
-              localStorage.setItem("user", token);
-              redirect('/')
-
-            } 
-            else {
-              localStorage.clear();
-            } 
+          fetch(`${API_BASE_URL}/api/getuser`, {
+            headers: { Authorization: "Bearer " + token },
           })
-        }else {
-          console.log('clear');
+            .then((resp) => resp.json())
+            .then((json) => {
+              console.log(json.user);
+              if (json.user) {
+                localStorage.setItem("user", token);
+                redirect("/");
+              } else {
+                localStorage.clear();
+              }
+            });
+        } else {
+          console.log("clear");
           localStorage.clear();
         }
       } catch (error) {
@@ -59,6 +64,7 @@ function App() {
             <Route path="/transactions" element={<Transactions />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/settings" element={<Settings />} />
+            {/* <Route path="/paybaba" element={<PaymentTest />} /> */}
           </Routes>
         </Router>
       </div>
