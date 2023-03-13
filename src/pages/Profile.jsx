@@ -40,14 +40,15 @@ export default class Profile extends Component {
 
   render() {
     const Submit = async (e) => {
+      const API_BASE_URL = "https://apis.mazimatic.com";
       const values = this.state;
       e.preventDefault();
       try {
-        const res = await fetch("/api/updateuser", {
+        const res = await fetch(`${API_BASE_URL}/api/updateuser`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + localStorage.getItem("token")
+            Authorization: "Bearer " + localStorage.getItem("token"),
           },
           body: JSON.stringify({
             email: values.email,

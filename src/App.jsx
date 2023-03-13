@@ -15,7 +15,7 @@ import Transactions from "./pages/Transactions";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
-// import PaymentTest from "./pages/Paymenttest";
+import PaymentTest from "./pages/Paymenttest";
 import "slick-carousel/slick/slick.css";
 
 function App() {
@@ -64,7 +64,7 @@ function App() {
             <Route path="/transactions" element={<Transactions />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/settings" element={<Settings />} />
-            {/* <Route path="/paybaba" element={<PaymentTest />} /> */}
+            <Route path="/payment" element={<PaymentTest />} />
           </Routes>
         </Router>
       </div>
